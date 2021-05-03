@@ -119,6 +119,9 @@ const agent = async ({
   question
 }) => {
     
+    console.log("In worker: ");
+    console.log(question);
+    
     if (question.touchFile) {
         const { path, workspace } = question.touchFile;
         await touch(path, { workspace });
