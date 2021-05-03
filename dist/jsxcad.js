@@ -63,9 +63,10 @@ const bootstrap = async () => {
   await sys.boot();
   const { ask, hear } = sys.conversation({ agent, say });
   self.ask = ask;
-  window.ask = self.ask;
-  console.log("got here");
+  //window.ask = self.ask;
+  
   onmessage = ({ data }) => hear(data);
+  
   // Now that we're ready, drain the buffer.
   if (self.messageBootQueue !== undefined) {
     while (self.messageBootQueue.length > 0) {
@@ -75,7 +76,7 @@ const bootstrap = async () => {
   while (messageBootQueue.length > 0) {
     hear(messageBootQueue.shift());
   }
-  if (onmessage === undefined) throw Error('die here');
+  if (onmessage === undefined) throw Error('die');
 };
 
 bootstrap();

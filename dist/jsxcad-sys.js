@@ -358,6 +358,7 @@ const conversation = ({ agent, say }) => {
       const answer = await agent({ ask, question });
       say({ id, answer });
     } else {
+      console.log(message);
       throw Error('die');
     }
   };
