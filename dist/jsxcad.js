@@ -63,9 +63,16 @@ const bootstrap = async () => {
   await sys.boot();
   const { ask, hear } = sys.conversation({ agent, say });
   self.ask = ask;
-  //window.ask = self.ask;
+  window.ask = self.ask;
   
-  onmessage = ({ data }) => hear(data);
+  onmessage = ({ data }) => {
+    if(typeof data == 'string'){
+        return -1;
+    }
+    else{
+        return hear(data);
+    }
+  };
   
   // Now that we're ready, drain the buffer.
   if (self.messageBootQueue !== undefined) {

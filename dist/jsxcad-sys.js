@@ -359,6 +359,7 @@ const conversation = ({ agent, say }) => {
       say({ id, answer });
     } else {
       console.log(message);
+      console.trace();
       throw Error('die');
     }
   };
